@@ -16,6 +16,7 @@ export default function Textbox(props) {
     
     const handleClear = () =>{
         setText('');
+        props.showAlert("Text Cleared","danger");
     }
 
     const handleCopy = () => {
@@ -23,7 +24,7 @@ export default function Textbox(props) {
         text.select();
         // text.setSelectionRange(0,9999);
         navigator.clipboard.writeText(text.value);
-        alert("Text Copied");
+        props.showAlert("Text Copied to Clipboard","success");
     }
 
     const handleSpaces = () => {
@@ -33,17 +34,20 @@ export default function Textbox(props) {
 
     var t = 0.008 *text.split(" ").length
     t = t.toFixed(4);
+     
+
+
     return (
-        <div>
-            <div className="container" style = {{
+        <div className="container">
+            <div style = {{
                 backgroundColor: props.mode==='dark' ? '#11085c' : 'white',
-                color:props.mode==='dark' ? 'white' : '#11085c'
+                color:props.mode==='dark' ? 'white' : 'black'
             }}>
             <h1>{props.heading}</h1>
             <div className="mb-3">
             <textarea className="form-control" style = {{
                 backgroundColor: props.mode==='dark' ? 'grey' : 'white',
-                color:props.mode==='dark' ? 'white' : '#11085c'
+                color:props.mode==='dark' ? 'white' : 'black'
             }} value={text} onChange={handleEvent} id="myBox" rows="5"></textarea>
             </div>
 
@@ -62,13 +66,13 @@ export default function Textbox(props) {
 
             <div className="container my-5" style = {{
                 backgroundColor: props.mode==='dark' ? '#11085c' : 'white',
-                color:props.mode==='dark' ? 'white' : '#11085c'
+                color:props.mode==='dark' ? 'white' : 'black'
             }}>
                 <h2>
                     Your Text Summary
                 </h2>
                 <h4>
-                    {text.split(" ").length} Words, {text.length} Characters
+                    {text==="" ? 0:text.split(" ").length} Words, {text.length} Characters
                 </h4>
                 
                 <h5>

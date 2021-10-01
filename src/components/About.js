@@ -1,40 +1,31 @@
-import React, {useState} from 'react'
+import React from 'react'
 
-export default function About() {
+export default function About(props) {
 
-    const [mystyle, setStyle] = useState({
-        color: "black",
-        backgroundColor: "white",
-        // border:"1px solid black"
-    });
-
-    const [buttonText, setbuttonText] = useState("Enable Dark Mode");
-
-    const toggleSetStyle = () => {
-      if (mystyle.color === "black") {
-        setStyle({
-          color: "white",
-          backgroundColor: "black",
-          border:'1px solid white'
-        });
-        setbuttonText("Enable Light Mode");
-      } else {
-        setStyle({
-          color: "black",
-          backgroundColor: "white",
-        });
-        setbuttonText("Enable Dark Mode");
-      }
-    };
+    
     return (
-      <div className="container" style={mystyle}>
-          <h1 className="my-3">About us</h1>
+      <div className="container" 
+      // style={mystyle}
+      style = {{
+        backgroundColor: props.mode==='dark' ? '#11085c' : 'white',
+        color:props.mode==='dark' ? 'white' : 'black',
+        
+    }}
+      >
+          <h1 className="my-3" style = {{
+                backgroundColor: props.mode==='dark' ? '#11085c' : 'white',
+                color:props.mode==='dark' ? 'white' : 'black'
+            }}>About us</h1>
         <div className="accordion accordion-flush" id="accordionFlushExample">
-          <div className="accordion-item">
+          <div className="accordion-item my-4">
             <h2 className="accordion-header" id="flush-headingOne">
               <button
                 className="accordion-button collapsed"
-                style={mystyle}
+                style = {{
+                  backgroundColor: props.mode==='dark' ? '#11085c' : 'white',
+                  color:props.mode==='dark' ? 'white' : 'black',
+                  border: props.mode==='dark' ? '1px solid white': ""
+              }}
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#flush-collapseOne"
@@ -50,19 +41,29 @@ export default function About() {
               aria-labelledby="flush-headingOne"
               data-bs-parent="#accordionFlushExample"
             >
-              <div className="accordion-body" style={mystyle}>
+              <div className="accordion-body" 
+              style = {{
+                backgroundColor: props.mode==='dark' ? '#11085c' : 'white',
+                color:props.mode==='dark' ? 'white' : 'black',
+                border: props.mode==='dark' ? '1px solid white': ""
+            }}
+              >
                 Placeholder content for this accordion, which is intended to
                 demonstrate the <code>.accordion-flush</code> class. This is the
                 first item's accordion body.
               </div>
             </div>
           </div>
-          <div className="accordion-item">
+          <div className="accordion-item my-4">
             <h2 className="accordion-header" id="flush-headingTwo">
               <button
                 className="accordion-button collapsed"
                 type="button"
-                style={mystyle}
+                style = {{
+                  backgroundColor: props.mode==='dark' ? '#11085c' : 'white',
+                  color:props.mode==='dark' ? 'white' : 'black',
+                  border: props.mode==='dark' ? '1px solid white': ""
+              }}
                 data-bs-toggle="collapse"
                 data-bs-target="#flush-collapseTwo"
                 aria-expanded="false"
@@ -77,7 +78,13 @@ export default function About() {
               aria-labelledby="flush-headingTwo"
               data-bs-parent="#accordionFlushExample"
             >
-              <div className="accordion-body" style={mystyle}>
+              <div className="accordion-body" 
+              style = {{
+                backgroundColor: props.mode==='dark' ? '#11085c' : 'white',
+                color:props.mode==='dark' ? 'white' : 'black',
+                border: props.mode==='dark' ? '1px solid white': ""
+            }}
+              >
                 Placeholder content for this accordion, which is intended to
                 demonstrate the <code>.accordion-flush</code> class. This is the
                 second item's accordion body. Let's imagine this being filled
@@ -90,7 +97,11 @@ export default function About() {
               <button
                 className="accordion-button collapsed"
                 type="button"
-                style={mystyle}
+                style = {{
+                  backgroundColor: props.mode==='dark' ? '#11085c' : 'white',
+                  color:props.mode==='dark' ? 'white' : 'black',
+                  border: props.mode==='dark' ? '1px solid white': ""
+              }}
                 data-bs-toggle="collapse"
                 data-bs-target="#flush-collapseThree"
                 aria-expanded="false"
@@ -105,7 +116,13 @@ export default function About() {
               aria-labelledby="flush-headingThree"
               data-bs-parent="#accordionFlushExample"
             >
-              <div className="accordion-body" style={mystyle}>
+              <div className="accordion-body" 
+              style = {{
+                backgroundColor: props.mode==='dark' ? '#11085c' : 'white',
+                color:props.mode==='dark' ? 'white' : 'black',
+                border: props.mode==='dark' ? '1px solid white': ""
+            }}
+              >
                 Placeholder content for this accordion, which is intended to
                 demonstrate the <code>.accordion-flush</code> class. This is the
                 third item's accordion body. Nothing more exciting happening
@@ -117,9 +134,6 @@ export default function About() {
           </div>
         </div>
         <div className="container">
-        <button type="button" onClick = {toggleSetStyle} className="btn btn-primary">
-            {buttonText}
-        </button>
         </div>
       </div>
     );
