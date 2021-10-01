@@ -1,12 +1,12 @@
 import './App.css';
 import {useState} from 'react';
-import About from './components/About';
+// import About from './components/About';
 import Navbar from './components/Navbar';
 import Textbox from './components/Textbox';
 import Alert from './components/Alert';
 
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import MainScreen from './components/MainScreen';
+// import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+// import MainScreen from './components/MainScreen';
 
 function App() {
   const [darkMode, setdarkMode] = useState('light');
@@ -37,26 +37,14 @@ function App() {
   }
   return (
     <div className="App">
-      <Router>
+
       <Navbar mode={darkMode} toggleMode = {toggleMode} text={textVal}/>
       <Alert alert = {alert}/>
       <div className="container">
-      <Switch>
-      <Route exact path='/'>
-        <MainScreen mode={darkMode}/>
-        </Route>
-        <Route exact path='/about'>
-        <About mode = {darkMode}/>
-        </Route>
-        <Route path='/alter'>
-        <Textbox heading = "Enter The Text To Analyze Below" mode={darkMode} showAlert={showAlert} />
-        </Route>
-      </Switch>
-      </div>
-      </Router>
-
       
-     
+        
+        <Textbox heading = "Enter The Text To Analyze Below" mode={darkMode} showAlert={showAlert} />
+      </div>
       </div>
   );
 }
