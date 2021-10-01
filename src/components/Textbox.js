@@ -32,13 +32,21 @@ export default function Textbox(props) {
         setText(newText.join(" "));
     }
 
-    var t = 0.008 *text.split(" ").length
+    var t = 0.0080 * text.split(" ").filter(
+        (elem)=>{
+            return elem.length!==0
+        }
+    ).length
+    if(t===0){
+        t = t.toFixed(0);
+    }
+    else
     t = t.toFixed(4);
      
 
 
     return (
-        <div className="container">
+        <div className="container my-5">
             <div style = {{
                 backgroundColor: props.mode==='dark' ? '#11085c' : 'white',
                 color:props.mode==='dark' ? 'white' : 'black'
@@ -46,22 +54,22 @@ export default function Textbox(props) {
             <h1>{props.heading}</h1>
             <div className="mb-3">
             <textarea className="form-control" style = {{
-                backgroundColor: props.mode==='dark' ? 'grey' : 'white',
+                backgroundColor: props.mode==='dark' ? '#13466e' : 'white',
                 color:props.mode==='dark' ? 'white' : 'black'
             }} value={text} onChange={handleEvent} id="myBox" rows="5"></textarea>
             </div>
 
-            <button className="btn btn-primary mx-5 my-5" onClick={handleClick}>
+            <button className="btn btn-primary mx-1 my-1" onClick={handleClick}>
             Convert to Uppercase
             </button>
-            <button className="btn btn-primary mx-5" onClick={handleClicktoLower}>
+            <button className="btn btn-primary mx-1 my 1" onClick={handleClicktoLower}>
             Convert to Lowercase
             </button>
-            <button className="btn btn-primary mx-5" onClick={handleCopy}>
+            <button className="btn btn-primary mx-1 my-1" onClick={handleCopy}>
             Copy Text
             </button>
-            <button className="btn btn-danger mx-5" onClick={handleSpaces}>Clear Extra Spaces</button>
-            <button className="btn btn-danger mx-5" onClick={handleClear}>Clear Text</button>
+            <button className="btn btn-danger mx-1 my-1" onClick={handleSpaces}>Clear Extra Spaces</button>
+            <button className="btn btn-danger mx-1 my-1" onClick={handleClear}>Clear Text</button>
             </div>
 
             <div className="container my-5" style = {{
@@ -72,7 +80,11 @@ export default function Textbox(props) {
                     Your Text Summary
                 </h2>
                 <h4>
-                    {text==="" ? 0:text.split(" ").length} Words, {text.length} Characters
+                    {text.split(" ").filter(
+                        (elem)=>{
+                            return elem.length!==0
+                        }
+                    ).length} Words, {text.length} Characters
                 </h4>
                 
                 <h5>
